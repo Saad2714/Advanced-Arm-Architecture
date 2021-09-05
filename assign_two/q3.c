@@ -15,16 +15,16 @@ void print(struct MyStack*);
 
 int main(void)
 {
+
     printf("creating stack ... \n");
 
     struct MyStack* stack_1 =  (struct MyStack*)malloc(sizeof(struct MyStack));
-
-    stack_1->head=4;
+    stack_1->head=0;
     printf("head is %d \n", stack_1->head);
-    
+
     stack_1->size=5;
     printf("Size is %d \n", stack_1->size);
-    
+
 
     for(int i=0;i<stack_1->size;i++)
     {
@@ -38,43 +38,30 @@ int main(void)
         printf("2 - Push a number \n");
         printf("3 - pop top number \n");
         printf("4 - Exit the stack program \n");
-    printf("\n");
 
         scanf("%d",&n);
         switch(n){
             case 1:
                 printf("Stack data from bottom to top: \n");
-    printf("\n");
-                
-                print(stack_1);  
-    printf("\n");
-
+                print(stack_1);                   
             case 2:
 
             int number;
                 printf("Enter number to push at the top of stack:");
-    printf("\n");
-
                 scanf("%d",&number);
                 push(stack_1,number);
 
             case 3:
                 pop(stack_1);
                 printf("Successfully popped top number \n");
-    printf("\n");
-
  
              case 4:
                 printf("Exiting\n");
-    printf("\n");
-
                 break;
  
 
             default:
                 printf("Please print 1, 2, 3 or 4... No other inputs!   \n  ");
-    printf("\n");
-
         }
 
     }
@@ -107,14 +94,13 @@ void print(struct MyStack* stack_1)
 {
     printf("Inside Print function... \n");
 
-    if(stack_1->head==stack_1->size){
+    if(stack_1->head==-1){
         printf("MyStack is empty. Please push numbers first\n");
     printf("\n");
 
-
     }
     
-    for(int i=stack_1->size-1;i>=stack_1->head;i--){
+    for(int i=0;i<=stack_1->head;i++){
         printf("%d\n",stack_1->myArray[i]);
     }
     printf("\n");
@@ -124,17 +110,16 @@ void print(struct MyStack* stack_1)
 void push(struct MyStack* stack_1, int num){
     printf("Inside Push function... \n");
 
-    if(stack_1->head==0){
+    if(stack_1->head==stack_1->size-1){
         printf("MyStack is completely full, kindly pop some numbers first \n");
     printf("\n");
 
     }
-
-    else if(stack_1->head!=0){
-        
-        stack_1->head=stack_1->head-1;
+    else if(stack_1->head!=stack_1->size-1) {
+        stack_1->head=stack_1->head+1;
         stack_1->myArray[stack_1->head] = num;
     }
+
 }
 
 
@@ -142,16 +127,17 @@ void pop(struct MyStack* stack_1)
 {
     printf("Inside Pop function... \n");
 
-    if(stack_1->head==stack_1->size){
+    if(stack_1->head==-1){
     printf("MyStack is completely empty, kindly push some numbers first \n ");
     printf("\n");
+    
     }
     else{
         int number = stack_1->myArray[stack_1->head];
         printf("Element getting popped : %d\n", number);
     printf("\n");
 
-        stack_1->head=stack_1->head+1;
+        stack_1->head=stack_1->head-1;
     }
 }
 
@@ -184,4 +170,6 @@ void pop(struct MyStack* stack_1)
 //   }
 //  }
 // }
+
+
 
