@@ -4,7 +4,7 @@
 
 struct  MyQueue{
     int top, bottom;
-    int  myArray[5];
+    int  myArray[10];
     int size;
 };
 
@@ -12,13 +12,12 @@ void add_to_queue(struct  MyQueue*, int num);
 void remove_from_Queue(struct  MyQueue*);
 void print(struct  MyQueue*);
 
-int main()
-{
+int main(){
     printf("creating queue ... \n");
 
     struct  MyQueue* queue_1 =  (struct  MyQueue*)malloc(sizeof(struct  MyQueue));
 
-    queue_1->size=5;
+    queue_1->size=10;
     printf("Size is %d \n", queue_1->size);
 
     queue_1->top=-1;
@@ -30,42 +29,51 @@ int main()
     for(int i=0;i<queue_1->size;i++){
         queue_1-> myArray[i]=0;
     }
+
     printf("\n");
-    
+
+        int n=0;
+        int number = 0;
+
     for(int loop=0; loop<100;loop++){
-        int n;
+
+
+        int x;
         printf("1 - Print Complete Circular_Queue   \n  ");
         printf("2 - Add to Circular_Queue   \n  ");
         printf("3 - Remove from Circular_Queue   \n  ");
         printf("4 - Exit the Circular_Queue program   \n  ");
-    printf("\n");
-        
-        scanf("  %d  ",&n);
-        switch(n){
-            case 1:
-                    print(queue_1);
-    printf("\n");
+        printf("\n");
 
-            case 2:
-                    int  number;
+        scanf("%d",&x);
+        // printf("input number is %d ", n);
+
+            if(x==1){
+            print(queue_1);
+                 }
+
+            else if(x==2){
+                    // int number;
                     printf("Enter  number:");
-                    scanf("  %d  ",& number);
+                    scanf("%d",& number);
                     add_to_queue(queue_1, number);
-    printf("\n");
+            }
 
-            case 3:
+            else if(x==3){
                    remove_from_Queue(queue_1);
-                     printf("Successfully popped top number   \n  ");
-    printf("\n");
-            case 4:
+                   printf("Successfully popped top number   \n  ");
+            }
+
+            else if(x==4){
+            
                 printf("Closing the program  \n  ");
                 break;
-
-    printf("\n");
-            default:
+            }
+            else{
                 printf("Please print 1, 2, 3 or 4... No other inputs!   \n  ");
-            printf("\n");
-        }
+                printf("\n");
+            }
+        
 
     }
     return 1;
@@ -88,7 +96,7 @@ int main()
 //    return itemCount;
 // }  
 
-// void insert(int data) {
+// void insert(int num) {
 
 //    if(!isFull()) {
 	
@@ -96,20 +104,20 @@ int main()
 //          rear = -1;            
 //       }       
 
-//       intArray[++rear] = data;
+//       intArray[++rear] = num;
 //       itemCount++;
 //    }
 // }
 
-// int removeData() {
-//    int data = intArray[front++];
+// int removenum() {
+//    int num = intArray[front++];
 	
 //    if(front == MAX) {
 //       front = 0;
 //    }
 	
 //    itemCount--;
-//    return data;  
+//    return num;  
 // }
 
 void print(struct MyQueue* queue_1)
@@ -151,7 +159,7 @@ void print(struct MyQueue* queue_1)
 }
 
 
-void add_to_queue(struct MyQueue* queue_1, int data)
+void add_to_queue(struct MyQueue* queue_1, int num)
 {
     printf("Inside add_to_queue function... \n");
 
@@ -165,28 +173,30 @@ void add_to_queue(struct MyQueue* queue_1, int data)
         return;
     }
 
-    else if(queue_1->top==-1 && queue_1->bottom==-1){
+    if(queue_1->top==-1 && queue_1->bottom==-1){
     printf("\n");
         
         queue_1->top = 0;
         queue_1->bottom = 0;
-        queue_1->myArray[queue_1->bottom] = data;
+        queue_1->myArray[queue_1->bottom] = num;
         return;
     }
 
-    else if(queue_1->bottom == queue_1->size-1 && queue_1->top!=0){
+     if(queue_1->bottom == queue_1->size-1 && queue_1->top!=0){
     printf("\n");
         
         queue_1->bottom = 0;
-        queue_1->myArray[queue_1->bottom]=data;
+        queue_1->myArray[queue_1->bottom]=num;
         return;
     }
-    else{
+
+    
     printf("\n");
 
     queue_1->bottom=queue_1->bottom+1;
-    queue_1->myArray[queue_1->bottom] = data;
-    }
+    queue_1->myArray[queue_1->bottom] = num;
+
+    
 
 }
 
@@ -237,7 +247,7 @@ void remove_from_Queue(struct MyQueue* queue_1)
 //         return INT_MIN;
 //     }
  
-//     int data = arr[front];
+//     int num = arr[front];
 //     arr[front] = -1;
 //     if (front == rear)
 //     {
@@ -249,7 +259,7 @@ void remove_from_Queue(struct MyQueue* queue_1)
 //     else
 //         front++;
  
-//     return data;
+//     return num;
 // }
  
 // // Function displaying the elements

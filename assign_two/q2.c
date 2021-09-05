@@ -34,44 +34,48 @@ int main(void)
 
     for(int loop=0; loop<100;loop++)
     {
-        int n;
+        int x;
         printf("1 - Print Complete stack \n");
         printf("2 - Push a number \n");
         printf("3 - pop top number \n");
         printf("4 - Exit the stack program \n");
     printf("\n");
 
-        scanf("%d",&n);
-        switch(n){
-            case 1:
-    printf("\n");
+        scanf("%d",&x);
+        if(x==1){
+
                 printf("Stack data from bottom to top: \n");
-                print(stack_1);                   
-            case 2:
+    printf("\n");
+                
+                print(stack_1);  
+    printf("\n");
+        }
+            else if(x==2){
 
             int number;
-    printf("\n");
                 printf("Enter number to push at the top of stack:");
+    printf("\n");
+
                 scanf("%d",&number);
                 push(stack_1,number);
-
-            case 3:
+            }
+            else if (x== 3){
                 pop(stack_1);
-                   printf("\n");
-printf("Successfully popped top number \n");
- 
-             case 4:
+                printf("Successfully popped top number \n");
     printf("\n");
-                printf("Exiting\n");
-                break;
- 
 
-            default:
+            }
+             else if (x==4){
+                printf("Closing the program ... \n");
+    printf("\n");
+
+                break;
+             }
+        else{
                 printf("Please print 1, 2, 3 or 4... No other inputs!   \n  ");
     printf("\n");
-       
+
         }
-        
 
     }
 

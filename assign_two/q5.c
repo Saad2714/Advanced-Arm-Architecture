@@ -29,8 +29,12 @@ int main()
     }
     printf("\n");
     
+        int number = 0;
+
     for(int loop=0; loop<100;loop++)
     {
+        int x;
+
         int n;
         printf("1 - Print Complete Queue  \n ");
         printf("2 - Add to Queue  \n ");
@@ -38,31 +42,34 @@ int main()
         printf("4 - Exit the Queue program  \n ");
     printf("\n");
         
-        scanf(" %d ",&n);
-        switch(n){
-            case 1:
-    printf("\n");
-                    print(queue_1);
-            case 2:
-                    int  number;
-    printf("\n");
-                    printf("Enter  number:");
-                    scanf("  %d  ",& number);
-                    add_to_queue(queue_1, number);
+        scanf("%d",&x);
+        // printf("input number is %d ", n);
 
-            case 3:
+            if(x==1){
+            print(queue_1);
+                 }
+
+            else if(x==2){
+                    // int number;
+                    printf("Enter  number:");
+                    scanf("%d",& number);
+                    add_to_queue(queue_1, number);
+            }
+
+            else if(x==3){
                    remove_from_Queue(queue_1);
-    printf("\n");
-                     printf("Successfully popped top number   \n  ");
-            case 4:
-    printf("\n");
+                   printf("Successfully popped top number   \n  ");
+            }
+
+            else if(x==4){
+            
                 printf("Closing the program  \n  ");
                 break;
-
-            default:
-    printf("\n");
+            }
+            else{
                 printf("Please print 1, 2, 3 or 4... No other inputs!   \n  ");
-        }
+                printf("\n");
+            }
     }
     return 1;
     printf("\n");
@@ -163,7 +170,7 @@ void remove_from_Queue(struct  MyQueue* queue_1)
         printf("Circular_Queue is completely empty, kindly push some numbers first \n ");
     printf("\n");
     }
-    int  number = queue_1-> myArray[queue_1->top];
+    int number = queue_1-> myArray[queue_1->top];
     for(int i=queue_1->top;i<queue_1->bottom-1;i++){
         queue_1-> myArray[i] = queue_1-> myArray[i+1];
     }
