@@ -1,0 +1,4 @@
+1. Largest of three numbers
+2. Find the largest number in the array
+3. Counting Even Number in array
+4. Generating Fibonacci series
